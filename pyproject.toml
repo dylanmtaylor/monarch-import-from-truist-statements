@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "monarch-import-from-truist-statements"
+version = "0.1.0"
+description = "Extract transactions and continuous daily balance history from Truist PDF statements for import into Monarch Money."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "Dylan M. Taylor", email = "dylan@dylanmtaylor.com" }
+]
+keywords = ["monarch", "monarch-money", "truist", "pdf", "statements", "finance", "csv"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Office/Business :: Financial",
+]
+dependencies = [
+    "pypdf>=3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[project.scripts]
+truist-to-monarch = "truist_to_monarch.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["truist_to_monarch*"]
